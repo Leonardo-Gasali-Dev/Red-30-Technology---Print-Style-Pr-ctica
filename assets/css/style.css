@@ -227,60 +227,102 @@ footer {
 }
 
 @media print {
-    :root {
-        --base-size: 0.8em;
-    }
-
-    body {
-        font-family: Georgia, "Times New Roman", Times, serif;
-    }
-
-    header img {
-        max-height: 0.5in;
-    }
-
-    nav {
-        display: none;
-    }
-
-    picture {
-        filter: grayscale(1);
-    }
-
-    .content {
-        display: block;
-    }
-
-    a[href]::after {
-        content: " (" attr(href) ")";
-        font-size: var(--base-size);
-    }
-
-    article {
-        margin-bottom: 0;
-    }
-
-    aside {
-        margin: 0;
-    }
-
-    .aside {
-        background-color: white;
-        color: black;
-        margin: 0.25in 0;
-        padding: 1rem;
-        border: 1px solid black;
-        border-radius: 10px;
-    }
-
-    .aside h3 {
-        color: black;
-    }
-
-    footer,
-    .footer a {
-        background-color: white;
-        color: black;
-        margin: 0;
-    }
+    @page {
+            margin: 0.5in;
+        }
+    
+        @page :left {
+            margin-right: 2in;
+        }
+    
+        @page :right {
+            margin-left: 2in;
+        }
+    
+        :root {
+            --base-size: 0.8em;
+        }
+    
+        body {
+            font-family: Georgia, "Times New Roman", Times, serif;
+        }
+    
+        header img {
+            max-height: 0.5in;
+        }
+    
+        nav {
+            display: none;
+        }
+    
+        /* Remueve imagen */
+        picture {
+            display: none;
+            /*    filter: grayscale(1); */
+        }
+    
+        .content {
+            display: block;
+        }
+    
+        a[href]::after {
+            content: " (" attr(href) ")";
+            font-size: var(--base-size);
+        }
+    
+        article {
+            margin-bottom: 0;
+        }
+    
+        /* Articulos columnas */
+        .articlebody {
+            columns: 2;
+        }
+    
+        aside {
+            margin: 0;
+        }
+    
+        .aside {
+            background-color: var(--white);
+            border-radius: 10px;
+            border: 1px solid black;
+            color: black;
+            margin: 0.25in 0;
+            padding: 1rem;
+        }
+    
+        .aside h3 {
+            color: black;
+        }
+    
+        footer,
+        .footer a {
+            background-color: var(--white);
+            color: black;
+            margin: 0;
+        }
+    
+        /* Impresión espacios despues de un parrafo o class */
+        .breakafter {
+            /* No se utiliza mas */
+            page-break-after: always;
+        }
+    
+        /* Impresión espacios */
+        /* .breakavoid {
+            break-inside: avoid;
+        } */
+    
+        @page {
+            margin: 0.5in;
+        }
+    
+        @page :left {
+            margin-right: 2in;
+        }
+    
+        @page :right {
+            margin-left: 2in;
+        }
 }
